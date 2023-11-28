@@ -1,7 +1,9 @@
 module.exports = {
-  extends: require.resolve('@umijs/max/eslint'),
+  extends: [require.resolve('@umijs/max/eslint')],
+  globals: {},
+  plugins: [],
   rules: {
-    'react/no-unknown-property': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'react/no-unknown-property': 'off',
   },
 };

@@ -9,7 +9,7 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 
-export function createConfig({ strict = true, dev = true } = {}) {
+export function createConfig({ dev = true } = {}) {
   return defineConfig({
     envMode: dev ? 'dev' : 'build',
     content: {
@@ -17,7 +17,7 @@ export function createConfig({ strict = true, dev = true } = {}) {
     },
     presets: [
       presetUno(),
-      presetAttributify({ strict }),
+      presetAttributify(),
       presetIcons({
         extraProperties: {
           display: 'inline-block',

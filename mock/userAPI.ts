@@ -1,20 +1,23 @@
-const users = [
-  { id: 0, name: 'Umi11', nickName: 'U', gender: 'MALE' },
-  { id: 1, name: 'Fish', nickName: 'B', gender: 'FEMALE' },
-];
+import Mock from 'mockjs';
+
+const template = {
+  'list|1-10': [
+    {
+      'id|+1': 1,
+      name: '@cname',
+      nickName: '@cname',
+      gender: '@integer(0, 1)',
+      age: '@integer(1, 99)',
+    },
+  ],
+};
 
 export default {
   'GET /api/v1/queryUserList': (req: any, res: any) => {
-    res.json({
-      success: true,
-      data: { list: users },
-      errorCode: 0,
-    });
-  },
-  'PUT /api/v1/user/': (req: any, res: any) => {
-    res.json({
+    res.send({
       success: true,
       errorCode: 0,
+      data: Mock.mock(template),
     });
   },
 };

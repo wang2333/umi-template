@@ -1,6 +1,6 @@
+import { ConfigProvider } from 'antd';
 import { getInitialState } from '@/config/getInitialState';
 import { layout } from '@/config/layout';
-import { ConfigProvider } from 'antd';
 
 /** 渲染之前做权限校验 */
 export function render(oldRender: any) {

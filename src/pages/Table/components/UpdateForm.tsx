@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ProFormDateTimePicker,
   ProFormRadio,
@@ -7,7 +8,6 @@ import {
   StepsForm,
 } from '@ant-design/pro-components';
 import { Modal } from 'antd';
-import React from 'react';
 
 export interface FormValueType extends Partial<API.UserInfo> {
   target?: string;

@@ -1,7 +1,8 @@
+import { Icon, useModel } from '@umijs/max';
+import { PageContainer } from '@ant-design/pro-components';
+import { Button } from 'antd';
 import Guide from '@/components/Guide';
 import { trim } from '@/utils/format';
-import { PageContainer } from '@ant-design/pro-components';
-import { Icon, useModel } from '@umijs/max';
 import styles from './index.less';
 
 const HomePage: React.FC = () => {
@@ -9,10 +10,11 @@ const HomePage: React.FC = () => {
   return (
     <PageContainer ghost>
       <p>123</p>
+      <Button>123</Button>
       <div className={styles.container}>
         <Icon icon="fa:500px"></Icon>
         <Icon icon="local:1"></Icon>
-        <div p-10 p-x-4 m-5 className="p-y-20">
+        <div className="p-y-20" m="x10" p="x-10 y-10">
           132
         </div>
         <Guide name={trim(name)} />

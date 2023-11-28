@@ -1,3 +1,4 @@
+import React, { useRef, useState } from 'react';
 import {
   ActionType,
   FooterToolbar,
@@ -7,15 +8,12 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { Button, Divider, Drawer, message } from 'antd';
-import React, { useRef, useState } from 'react';
-
 import {
   addUser,
   deleteUser,
   modifyUser,
   queryUserList,
 } from '@/services/demo';
-
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 
