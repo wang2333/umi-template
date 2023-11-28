@@ -12,7 +12,9 @@ const HomePage: React.FC = () => {
       <div className={styles.container}>
         <Icon icon="fa:500px"></Icon>
         <Icon icon="local:1"></Icon>
-        <div className="p10 m-6 br">132</div>
+        <div p-10 p-x-4 m-5 className="p-y-20">
+          132
+        </div>
         <Guide name={trim(name)} />
       </div>
     </PageContainer>
