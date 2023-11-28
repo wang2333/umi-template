@@ -6,13 +6,13 @@ export default [
   {
     name: '首页',
     path: '/home',
-    icon: 'icon-tuceng',
+    icon: 'icon-jiantou',
     component: './Home',
   },
   {
     name: '权限演示',
     path: '/access',
-    icon: 'icon-tuceng',
+    icon: 'icon-facebook',
     component: './Access',
   },
   {
