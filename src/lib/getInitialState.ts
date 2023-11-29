@@ -1,7 +1,8 @@
 export interface InitialState {
   isAdmin: boolean;
+  collapsed: boolean;
 }
 
 export const getInitialState = async (): Promise<InitialState> => {
-  return { isAdmin: true };
+  return { collapsed: false, isAdmin: true };
 };

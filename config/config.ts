@@ -1,4 +1,5 @@
 import { defineConfig } from '@umijs/max';
+
 import proxy from './proxy';
 import routes from './routes';
 
@@ -13,11 +14,16 @@ export default defineConfig({
   initialState: {},
   request: {},
   icons: { autoInstall: {} },
-  routes,
   proxy: proxy[REACT_APP_ENV as keyof typeof proxy],
-  layout: {},
-  alias: {
-    '@': require('path').resolve(__dirname, 'src'),
-    '~': require('path').resolve(__dirname, 'public'),
+  layout: {
+    title: 'umi-max',
   },
+  routes,
+  headScripts: [{ src: '/scripts/loading.js', async: true }],
+  fastRefresh: true,
+  mfsu: {
+    strategy: 'normal',
+  },
+  esbuildMinifyIIFE: true,
+  ignoreMomentLocale: true,
 });

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 const useUser = () => {
-  const [name, setName] = useState<string>('');
+  const [collapsed, setCollapsed] = useState<boolean>(false);
   return {
-    name,
-    setName,
+    collapsed,
+    setCollapsed,
   };
 };
 

@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import { request } from '@umijs/max';
 
 /** 此处后端没有提供注释 GET /api/v1/queryUserList */
@@ -91,4 +92,15 @@ export async function deleteUser(
     params: { ...params },
     ...(options || {}),
   });
+}
+
+export function useQueryUserList() {
+  console.log(123);
+  const { data, error, isLoading } = useSWR(`/api/v1/queryUserList`);
+
+  return {
+    data,
+    isLoading,
+    isError: error,
+  };
 }

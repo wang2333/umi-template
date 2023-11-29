@@ -1,8 +1,17 @@
 @unocss;
 
-html {
-  font-size: 4px;
+.ant-layout-header.ant-pro-layout-header-fixed-header {
+  inset-inline-end: auto !important;
+  background-color: #fff !important;
 }
-body {
-  font-size: 16px;
+
+.ant-pro-sider.ant-pro-sider-fixed-mix {
+  inset-block-start: 0 !important;
+  height: 100% !important;
+  background-color: #fff !important;
+}
+
+.ant-pro-sider-logo {
+  padding: 0 !important;
+  height: 56px;
 }
