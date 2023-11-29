@@ -19,9 +19,11 @@
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
     "@umijs/max": "^4.0.88",
-    "antd": "^5.11.4"
+    "antd": "^5.11.4",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@iconify-json/fa": "1.1.6",
     "@types/react": "^18.2.38",
@@ -30,8 +32,10 @@
     "@unocss/preset-attributify": "^0.57.7",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
+    "immer": "^10.0.3",
     "lint-staged": "^15.1.0",
-    "mockjs": "^1.1.0",
-    "prettier": "^3.1.0"
+    "madge": "6.0.0",
+    "prettier": "^3.1.0",
+    "unocss": "^0.57.7"
   }
 }

@@ -1,7 +1,6 @@
 import {
   defineConfig,
   presetAttributify,
-  presetIcons,
   presetTypography,
   presetUno,
   transformerAttributifyJsx,
@@ -15,17 +14,7 @@ export function createConfig({ dev = true } = {}) {
     content: {
       filesystem: ['**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'],
     },
-    presets: [
-      presetUno(),
-      presetAttributify(),
-      presetIcons({
-        extraProperties: {
-          display: 'inline-block',
-          'vertical-align': 'middle',
-        },
-      }),
-      presetTypography(),
-    ],
+    presets: [presetUno(), presetAttributify(), presetTypography()],
     transformers: [
       transformerDirectives(),
       transformerVariantGroup(),

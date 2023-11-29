@@ -1,6 +1,8 @@
 import { ConfigProvider } from 'antd';
-import { getInitialState } from '@/config/getInitialState';
-import { layout } from '@/config/layout';
+
+import { MessageProvider, ModalProvider } from '@/hooks';
+import { getInitialState } from '@/lib/getInitialState';
+import { layout } from '@/lib/layout';
 
 /** 渲染之前做权限校验 */
 export function render(oldRender: any) {
@@ -9,7 +11,13 @@ export function render(oldRender: any) {
 
 /** 修改交给 react-dom 渲染时的根组件 */
 export const innerProvider = (children: any) => {
-  return <ConfigProvider>{children}</ConfigProvider>;
+  return (
+    <ConfigProvider>
+      <ModalProvider>
+        <MessageProvider>{children}</MessageProvider>
+      </ModalProvider>
+    </ConfigProvider>
+  );
 };
 
 export { getInitialState, layout };

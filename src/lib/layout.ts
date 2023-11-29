@@ -2,7 +2,7 @@ import { RunTimeLayoutConfig } from '@umijs/max';
 
 export const layout: RunTimeLayoutConfig = () => {
   return {
-    iconfontUrl: './font_2532837_26enocyxk1q.js',
+    iconfontUrl: './iconFont/font_2532837_26enocyxk1q.js',
     actionsRender() {
       return [];
     },

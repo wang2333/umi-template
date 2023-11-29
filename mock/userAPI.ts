@@ -1,23 +1,19 @@
-import Mock from 'mockjs';
-
-const template = {
-  'list|1-10': [
-    {
-      'id|+1': 1,
-      name: '@cname',
-      nickName: '@cname',
-      gender: '@integer(0, 1)',
-      age: '@integer(1, 99)',
-    },
-  ],
-};
+import { fakerZH_CN as faker } from '@faker-js/faker';
 
 export default {
   'GET /api/v1/queryUserList': (req: any, res: any) => {
     res.send({
       success: true,
       errorCode: 0,
-      data: Mock.mock(template),
+      data: {
+        list: Array.from({ length: 10 }).map((_, index) => ({
+          id: index,
+          name: faker.person.fullName(),
+          nickName: faker.person.zodiacSign(),
+          gender: faker.number.int({ min: 0, max: 1 }),
+          age: faker.number.int({ min: 18, max: 60 }),
+        })),
+      },
     });
   },
 };

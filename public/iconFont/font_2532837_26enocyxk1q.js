@@ -1,5 +1,5 @@
 !(function (t) {
-  var c,
+  let c,
     e,
     l,
     o,
@@ -24,7 +24,7 @@
     i || ((i = !0), l());
   }
   (c = function () {
-    var t, c, e;
+    let t, c, e;
     ((e = document.createElement('div')).innerHTML = a),
       (a = null),
       (c = e.getElementsByTagName('svg')[0]) &&
@@ -58,6 +58,6 @@
           d();
         })(),
         (o.onreadystatechange = function () {
-          'complete' == o.readyState && ((o.onreadystatechange = null), d());
+          'complete' === o.readyState && ((o.onreadystatechange = null), d());
         }));
 })(window);
