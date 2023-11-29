@@ -1,4 +1,24 @@
-export default [
+interface IBestAFSRoute {
+  path: string;
+  redirect?: string;
+  component?: string;
+  name?: string;
+  icon?: string;
+  target?: string;
+  headerRender?: boolean;
+  footerRender?: boolean;
+  menuRender?: boolean;
+  menuHeaderRender?: boolean;
+  access?: string;
+  hideChildrenInMenu?: boolean;
+  hideInMenu?: boolean;
+  hideInBreadcrumb?: boolean;
+  flatMenu?: boolean;
+  routes?: IBestAFSRoute[];
+  [key: string]: any;
+}
+
+const routes: IBestAFSRoute[] = [
   {
     path: '/',
     redirect: '/home',
@@ -12,7 +32,6 @@ export default [
   {
     name: '权限演示',
     path: '/access',
-    icon: 'icon-facebook',
     component: './Access',
   },
   {
@@ -23,3 +42,5 @@ export default [
   },
   { path: '*', layout: false, component: './404' },
 ];
+
+export default routes;

@@ -1,5 +1,5 @@
 !(function (t) {
-  let c,
+  var c,
     e,
     l,
     o,
@@ -58,6 +58,6 @@
           d();
         })(),
         (o.onreadystatechange = function () {
-          'complete' === o.readyState && ((o.onreadystatechange = null), d());
+          'complete' == o.readyState && ((o.onreadystatechange = null), d());
         }));
 })(window);

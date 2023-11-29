@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
   const modal = useModal();
 
   return (
-    <PageContainer ghost>
+    <PageContainer content={<span>111</span>}>
       <p>{salmon}</p>
 
       <Button
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
       </Button>
 
       <p>123</p>
-      <Button>123</Button>
+      <Button type="primary">123</Button>
       <div className={styles.container}>
         <Icon icon="fa:500px"></Icon>
         <Icon icon="local:1"></Icon>
