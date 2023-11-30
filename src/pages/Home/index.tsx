@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   const modal = useModal();
 
   const { data } = useQueryUserList({ id: 1 });
-  console.log('👻 ~ data1:', data);
+  console.log('👻 ~ data1:', data?.list);
 
   return (
     <PageContainer>

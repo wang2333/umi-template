@@ -176,11 +176,10 @@ const TableList: React.FC<unknown> = () => {
             sorter,
             filter,
           });
-          console.log('👻 ~ data2:', data);
 
           return {
             data: data?.list || [],
-            success: data?.success,
+            success: true,
           };
         }}
         columns={columns}

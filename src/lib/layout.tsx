@@ -5,7 +5,7 @@ import MenuHeader from './components/MenuHeader';
 
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
-    iconfontUrl: './iconFont/font_2532837_26enocyxk1q.js',
+    // iconfontUrl: './iconFont/font_2532837_26enocyxk1q.js',
     layout: 'mix',
     fixedHeader: true,
     fixSiderbar: true,

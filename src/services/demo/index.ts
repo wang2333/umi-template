@@ -7,7 +7,11 @@ interface User {
   age: number;
 }
 
-export function useQueryUserList(params: any): UseQueryResult<User[]> {
+interface Result {
+  list: User[];
+}
+
+export function useQueryUserList(params: any): UseQueryResult<Result> {
   return useQuery({
     queryKey: ['/api/v1/queryUserList', params],
     queryFn: postFn,
@@ -17,7 +21,7 @@ export function useQueryUserList(params: any): UseQueryResult<User[]> {
 export function useQueryUserList2() {
   return useMutation({
     mutationFn: (params: any) => {
-      return getFn<User[]>({ queryKey: ['/api/v1/queryUserList', params] });
+      return getFn<Result>({ queryKey: ['/api/v1/queryUserList', params] });
     },
   });
 }

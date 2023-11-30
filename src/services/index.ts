@@ -35,7 +35,7 @@ export async function getFn<T>({ queryKey }: QueryFnType): Promise<T> {
     method: 'GET',
     params: queryKey[1] || {},
   });
-  return res.data;
+  return res.data.data;
 }
 
 export async function postFn<T>({ queryKey }: QueryFnType): Promise<T> {
@@ -44,5 +44,5 @@ export async function postFn<T>({ queryKey }: QueryFnType): Promise<T> {
     method: 'POST',
     params: queryKey[1] || {},
   });
-  return res.data;
+  return res.data.data;
 }
