@@ -51,7 +51,6 @@ export const request: RequestConfig = {
   requestInterceptors: [
     (config: any) => {
       const headers = { ...config.headers, 'Content-Type': 'application/json' };
-
       return { ...config, headers };
     },
   ],

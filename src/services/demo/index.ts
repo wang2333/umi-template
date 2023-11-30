@@ -1,5 +1,20 @@
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 import { request } from '@umijs/max';
+
+import { fetcher, fetcherMutatio } from '../index';
+
+interface User {
+  name: string;
+  age: number;
+}
+
+export function useQueryUserList(params: any) {
+  return useSWR<User>({ url: `/api/v1/queryUserList`, arg: params }, fetcher);
+}
+export function useQueryUserList2() {
+  return useSWRMutation<User>(`/api/v1/queryUserList`, fetcherMutatio);
+}
 
 /** 此处后端没有提供注释 GET /api/v1/queryUserList */
 export async function queryUserList(
@@ -92,15 +107,4 @@ export async function deleteUser(
     params: { ...params },
     ...(options || {}),
   });
-}
-
-export function useQueryUserList() {
-  console.log(123);
-  const { data, error, isLoading } = useSWR(`/api/v1/queryUserList`);
-
-  return {
-    data,
-    isLoading,
-    isError: error,
-  };
 }

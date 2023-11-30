@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import { useModel } from '@umijs/max';
 
 interface MenuHeaderProps {
-  logo?: string;
-  title?: string;
+  logo?: ReactNode;
+  title?: ReactNode;
 }
 const Header: React.FC<MenuHeaderProps> = ({ logo, title }) => {
   const { initialState } = useModel('@@initialState');

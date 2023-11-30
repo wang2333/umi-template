@@ -3,10 +3,7 @@ import { RunTimeLayoutConfig } from '@umijs/max';
 import HeaderContent from './components/HeaderContent';
 import MenuHeader from './components/MenuHeader';
 
-export const layout: RunTimeLayoutConfig = ({
-  initialState,
-  setInitialState,
-}) => {
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     iconfontUrl: './iconFont/font_2532837_26enocyxk1q.js',
     layout: 'mix',

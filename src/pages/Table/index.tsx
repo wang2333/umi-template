@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import useSWRMutation from 'swr/mutation';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ActionType,
   FooterToolbar,
@@ -9,11 +10,14 @@ import {
 } from '@ant-design/pro-components';
 import { Button, Divider, Drawer, message } from 'antd';
 
+import { fetcher } from '@/services';
 import {
   addUser,
   deleteUser,
   modifyUser,
   queryUserList,
+  useQueryUserList,
+  useQueryUserList2,
 } from '@/services/demo';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
@@ -93,6 +97,7 @@ const TableList: React.FC<unknown> = () => {
   const actionRef = useRef<ActionType>();
   const [row, setRow] = useState<API.UserInfo>();
   const [selectedRowsState, setSelectedRows] = useState<API.UserInfo[]>([]);
+
   const columns: ProColumns<API.UserInfo>[] = [
     {
       title: '名称',
@@ -142,15 +147,15 @@ const TableList: React.FC<unknown> = () => {
     },
   ];
 
+  const { trigger } = useQueryUserList2();
+
   return (
     <PageContainer
       header={{
         title: 'CRUD 示例',
       }}
     >
-      <Button danger>123</Button>
-
-      <ProTable<API.UserInfo>
+      <ProTable
         headerTitle="查询表格"
         actionRef={actionRef}
         rowKey="id"
@@ -167,16 +172,12 @@ const TableList: React.FC<unknown> = () => {
           </Button>,
         ]}
         request={async (params, sorter, filter) => {
-          const { data, success } = await queryUserList({
-            ...params,
-            // FIXME: remove @ts-ignore
-            // @ts-ignore
-            sorter,
-            filter,
-          });
+          const data = { ...params, sorter, filter };
+          const result = await trigger({ id: 1 });
+
           return {
-            data: data?.list || [],
-            success,
+            data: result?.list || [],
+            success: true,
           };
         }}
         columns={columns}
