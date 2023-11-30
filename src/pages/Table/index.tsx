@@ -1,4 +1,3 @@
-import useSWRMutation from 'swr/mutation';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ActionType,
@@ -147,7 +146,7 @@ const TableList: React.FC<unknown> = () => {
     },
   ];
 
-  const { trigger } = useQueryUserList2();
+  const { mutateAsync } = useQueryUserList2();
 
   return (
     <PageContainer
@@ -172,12 +171,16 @@ const TableList: React.FC<unknown> = () => {
           </Button>,
         ]}
         request={async (params, sorter, filter) => {
-          const data = { ...params, sorter, filter };
-          const result = await trigger({ id: 1 });
+          const data = await mutateAsync({
+            ...params,
+            sorter,
+            filter,
+          });
+          console.log('👻 ~ data2:', data);
 
           return {
-            data: result?.list || [],
-            success: true,
+            data: data?.list || [],
+            success: data?.success,
           };
         }}
         columns={columns}

@@ -1,32 +1,48 @@
-import { request } from '@umijs/max';
+import axios from 'axios';
 
-type ParamsType = Record<string, any>;
+const { REACT_APP_BASE_API } = process.env;
 
-/** get 请求fetcher */
-export const fetcher = async (props: any) => {
-  const { url, arg } = props;
-  const res = await request(url, {
+const service = axios.create({
+  baseURL: REACT_APP_BASE_API,
+  timeout: 60 * 1000,
+});
+
+service.interceptors.request.use(
+  (config) => {
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
+service.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
+interface QueryFnType {
+  queryKey: any[];
+}
+
+export async function getFn<T>({ queryKey }: QueryFnType): Promise<T> {
+  const url = queryKey[0];
+  const res = await service(url, {
     method: 'GET',
-    params: arg,
+    params: queryKey[1] || {},
   });
-  return res;
-};
+  return res.data;
+}
 
-/** post 请求fetcher */
-export const fetcherPost = async (url: string, params?: ParamsType) => {
-  const res = await request(url, {
+export async function postFn<T>({ queryKey }: QueryFnType): Promise<T> {
+  const url = queryKey[0];
+  const res = await service(url, {
     method: 'POST',
-    data: params,
+    params: queryKey[1] || {},
   });
   return res.data;
-};
-
-/** useSWRMutation 请求fetcher */
-export const fetcherMutatio = async (url: string, params?: ParamsType) => {
-  console.log('👻 ~ params:', params);
-  const res = await request(url, {
-    method: 'GET',
-    params: params?.arg,
-  });
-  return res.data;
-};
+}

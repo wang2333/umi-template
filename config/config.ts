@@ -6,24 +6,24 @@ import routes from './routes';
 const { REACT_APP_ENV = 'dev' } = process.env;
 
 export default defineConfig({
-  npmClient: 'pnpm',
-  hash: true,
   antd: {},
   access: {},
-  model: {},
+  esbuildMinifyIIFE: true,
+  fastRefresh: true,
+  headScripts: [{ src: '/scripts/loading.js', async: true }],
+  hash: true,
   initialState: {},
-  request: {},
   icons: { autoInstall: {} },
-  proxy: proxy[REACT_APP_ENV as keyof typeof proxy],
+  ignoreMomentLocale: true,
   layout: {
     title: 'umi-max',
   },
-  routes,
-  headScripts: [{ src: '/scripts/loading.js', async: true }],
-  fastRefresh: true,
+  model: {},
   mfsu: {
     strategy: 'normal',
   },
-  esbuildMinifyIIFE: true,
-  ignoreMomentLocale: true,
+  npmClient: 'pnpm',
+  proxy: proxy[REACT_APP_ENV as keyof typeof proxy],
+  routes,
+  reactQuery: {},
 });
