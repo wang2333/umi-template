@@ -21,8 +21,8 @@ const store: StateCreator<StoreType> = (set) => ({
   ...initialState,
   addSalmon: (num: number) => {
     set(
-      produce((draft) => {
-        draft.salmon += num;
+      produce((state) => {
+        state.salmon += num;
       }),
     );
   },
