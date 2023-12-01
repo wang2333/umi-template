@@ -9,11 +9,10 @@ const HomePage: React.FC = () => {
   const modal = useModal();
 
   const { data } = useQueryUserList({ id: 1 });
-  console.log('👻 ~ data1:', data?.list);
 
   return (
     <PageContainer>
-      <StarOutlined />
+      <StarOutlined p="8" bg=" cyan" />
       <StarFilled />
       <StarTwoTone twoToneColor="#eb2f96" />
     </PageContainer>
