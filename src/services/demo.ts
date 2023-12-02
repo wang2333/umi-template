@@ -1,6 +1,6 @@
 import { useMutation, useQuery, UseQueryResult } from '@umijs/max';
 
-import { getFn, postFn } from './index';
+import { getFn, postFn } from '@/lib/request';
 
 interface User {
   name: string;
