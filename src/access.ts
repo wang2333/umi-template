@@ -4,6 +4,6 @@ import { InitialState } from './lib/getInitialState';
 export default (initialState: InitialState) => {
   // fetch data from server
   return {
-    isAdmin: initialState.isAdmin,
+    currentUser: initialState.currentUser,
   };
 };

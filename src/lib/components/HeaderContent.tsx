@@ -7,9 +7,9 @@ const Header: React.FC = () => {
   const routes = useSelectedRoutes();
 
   const handleClick = () => {
-    setInitialState((s: any) => ({
+    setInitialState((s) => ({
       ...s,
-      collapsed: !s.collapsed,
+      collapsed: !s?.collapsed,
     }));
   };
 

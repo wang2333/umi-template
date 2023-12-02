@@ -16,6 +16,11 @@ export default [
     redirect: '/home',
   },
   {
+    path: '/login',
+    layout: false,
+    component: './Login',
+  },
+  {
     name: '首页',
     path: '/home',
     icon: 'home',

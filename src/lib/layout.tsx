@@ -1,7 +1,9 @@
-import { RunTimeLayoutConfig } from '@umijs/max';
+import { history, Link, RunTimeLayoutConfig } from '@umijs/max';
 
 import HeaderContent from './components/HeaderContent';
 import MenuHeader from './components/MenuHeader';
+
+const loginPath = '/login';
 
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
@@ -11,18 +13,21 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     fixSiderbar: true,
     collapsed: initialState?.collapsed,
     collapsedButtonRender: false,
-    actionsRender() {
-      return [];
+    onPageChange: () => {
+      const { location } = history;
+      const toke = localStorage.getItem('token');
+      // 如果没有登录，重定向到 login
+      if (!toke && location.pathname !== loginPath) {
+        history.push(loginPath);
+      }
     },
     headerRender: () => <HeaderContent />,
-    // headerContentRender: () => <HeaderContent />,
     footerRender: () => null,
-    menuHeaderRender: (logo, title) => <MenuHeader logo={logo} title={title} />,
-    // menuItemRender() {
-    //   return <span>menuItemRender</span>;
-    // },
-    // menuFooterRender() {
-    //   return <span>menuFooterRender</span>;
-    // },
+    menuHeaderRender: (logo: any, title: any) => (
+      <MenuHeader logo={logo} title={title} />
+    ),
+    childrenRender: (children) => {
+      return <>{children}</>;
+    },
   };
 };
