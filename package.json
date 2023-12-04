@@ -7,8 +7,7 @@
     "format": "prettier --cache --write .",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install",
-    "setup": "max setup",
-    "start": "npm run dev"
+    "setup": "max setup"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,less}": [
@@ -22,6 +21,7 @@
     "antd": "^5.11.5",
     "autofit.js": "^3.0.6",
     "axios": "^1.6.2",
+    "unocss": "^0.58.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
@@ -39,7 +39,6 @@
     "lint-staged": "^15.2.0",
     "madge": "6.1.0",
     "prettier": "^3.1.0",
-    "swc-plugin-auto-css-modules": "^1.5.0",
-    "unocss": "^0.58.0"
+    "swc-plugin-auto-css-modules": "^1.5.0"
   }
 }
