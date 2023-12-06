@@ -1,32 +1,36 @@
 import { create, StateCreator } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
+import zustandStorage from './zustandStorage';
 
 type Info = Record<string, any> | null;
-
 type State = {
   userInfo: Info;
 };
-
 type Actions = {
   setUserInfo: (data: Info) => void;
 };
 
-type StoreType = State & Actions;
+type StoreType = StateCreator<State & Actions, [['zustand/immer', never]], []>;
 
 /** 初始状态 */
 const initialState: State = {
   userInfo: null,
 };
 
-const store: StateCreator<StoreType> = (set, get) => ({
+const store: StoreType = (set) => ({
   ...initialState,
   setUserInfo: (data: Info) => {
-    set(() => ({ userInfo: data }));
+    set((state) => {
+      state.userInfo = data;
+    });
   },
 });
 
-export const useLoginStore = create<StoreType>()(
-  persist(store, {
-    name: 'userInfo',
-  }),
+export const useLoginStore = create<State & Actions>()(
+  immer(
+    persist(store, {
+      name: 'LOGIN',
+    }),
+  ),
 );
