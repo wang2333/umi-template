@@ -17,6 +17,7 @@ import {
   queryUserList,
   useQueryUserList,
   useQueryUserList2,
+  useQueryUserList3,
 } from '@/services/demo';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
@@ -171,12 +172,7 @@ const TableList: React.FC<unknown> = () => {
           </Button>,
         ]}
         request={async (params, sorter, filter) => {
-          const data = await mutateAsync({
-            ...params,
-            sorter,
-            filter,
-          });
-
+          const data = await mutateAsync({ ...params, sorter, filter });
           return {
             data: data?.list || [],
             success: true,

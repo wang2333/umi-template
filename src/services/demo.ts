@@ -1,4 +1,4 @@
-import { useMutation, useQuery, UseQueryResult } from '@umijs/max';
+import { useMutation, useQuery } from '@umijs/max';
 
 import { getFn, postFn } from '@/lib/request';
 
@@ -11,19 +11,24 @@ interface Result {
   list: User[];
 }
 
-export function useQueryUserList(params: any): UseQueryResult<Result> {
+export function useQueryUserList(params: any) {
   return useQuery({
     queryKey: ['/api/v1/queryUserList', params],
-    queryFn: postFn,
+    queryFn: postFn<Result>,
+  });
+}
+
+export function useQueryUserList3(params: any) {
+  return useQuery({
+    queryKey: ['/api/v1/queryUserList', params],
+    queryFn: getFn<Result>,
   });
 }
 
 export function useQueryUserList2() {
-  return useMutation({
-    mutationFn: (params: any) => {
-      return getFn<Result>({ queryKey: ['/api/v1/queryUserList', params] });
-    },
-  });
+  return useMutation((params: any) =>
+    getFn<Result>({ queryKey: ['/api/v1/queryUserList', params] }),
+  );
 }
 
 export async function queryUserList() {}
