@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useQueryClient } from '@umijs/max';
 import {
   ActionType,
   FooterToolbar,
@@ -146,8 +147,9 @@ const TableList: React.FC<unknown> = () => {
       ),
     },
   ];
-
+  const queryClient = useQueryClient();
   const { mutateAsync } = useQueryUserList2();
+  const { data } = useQueryUserList({ id: 1 });
 
   return (
     <PageContainer
@@ -173,6 +175,7 @@ const TableList: React.FC<unknown> = () => {
         ]}
         request={async (params, sorter, filter) => {
           const data = await mutateAsync({ ...params, sorter, filter });
+          queryClient.invalidateQueries(['/api/v1/queryUserList']);
           return {
             data: data?.list || [],
             success: true,

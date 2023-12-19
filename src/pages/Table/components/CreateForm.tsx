@@ -1,6 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import { Modal } from 'antd';
 
+import { useQueryUserList } from '@/services/demo';
+
 interface CreateFormProps {
   modalVisible: boolean;
   onCancel: () => void;
@@ -8,6 +10,7 @@ interface CreateFormProps {
 
 const CreateForm: React.FC<PropsWithChildren<CreateFormProps>> = (props) => {
   const { modalVisible, onCancel } = props;
+  const { data } = useQueryUserList({ id: 1 });
 
   return (
     <Modal
