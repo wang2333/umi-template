@@ -102,6 +102,7 @@ const TableList: React.FC<unknown> = () => {
   const columns: ProColumns<API.UserInfo>[] = [
     {
       title: '名称',
+      width: 150,
       dataIndex: 'name',
       tip: '名称是唯一的 key',
       formItemProps: {
@@ -149,7 +150,10 @@ const TableList: React.FC<unknown> = () => {
   ];
   const queryClient = useQueryClient();
   const { mutateAsync } = useQueryUserList2();
-  const { data } = useQueryUserList({ id: 1 });
+  const [params, setParams] = useState<any>();
+
+  const { data, isLoading } = useQueryUserList(params);
+  console.log('👻 ~ data:', data);
 
   return (
     <PageContainer
@@ -158,6 +162,7 @@ const TableList: React.FC<unknown> = () => {
       }}
     >
       <ProTable
+        loading={isLoading}
         headerTitle="查询表格"
         actionRef={actionRef}
         rowKey="id"
@@ -173,13 +178,15 @@ const TableList: React.FC<unknown> = () => {
             新建
           </Button>,
         ]}
+        pagination={{
+          total: 100,
+        }}
         request={async (params, sorter, filter) => {
           const data = await mutateAsync({ ...params, sorter, filter });
-          queryClient.invalidateQueries(['/api/v1/queryUserList']);
-          return {
+          return Promise.resolve({
             data: data?.list || [],
             success: true,
-          };
+          });
         }}
         columns={columns}
         rowSelection={{

@@ -25,24 +25,12 @@ service.interceptors.response.use(
   },
 );
 
-interface QueryFnType {
-  queryKey: any[];
-}
-
-export async function getFn<T>({ queryKey }: QueryFnType): Promise<T> {
-  const url = queryKey[0];
-  const res = await service(url, {
-    method: 'GET',
-    params: queryKey[1] || {},
-  });
+export async function getFn<T>(url: string, params: any): Promise<T> {
+  const res = await service(url, { method: 'GET', params });
   return res.data.data;
 }
 
-export async function postFn<T>({ queryKey }: QueryFnType): Promise<T> {
-  const url = queryKey[0];
-  const res = await service(url, {
-    method: 'POST',
-    params: queryKey[1] || {},
-  });
+export async function postFn<T>(url: string, params: any): Promise<T> {
+  const res = await service(url, { method: 'POST', params });
   return res.data.data;
 }
