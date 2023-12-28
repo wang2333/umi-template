@@ -15,3 +15,8 @@
   padding: 0 !important;
   height: 56px;
 }
+
+/* 定义项目的全局样式 */
+:root {
+  --primary-color: 255 0 0;
+}

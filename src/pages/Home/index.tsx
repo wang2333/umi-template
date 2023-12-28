@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from '@umijs/max';
 import { StarFilled, StarOutlined, StarTwoTone } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button } from 'antd';
@@ -14,6 +15,8 @@ const HomePage: React.FC = () => {
 
   return (
     <PageContainer>
+      <Icon icon="fa:500px" className="text-dark"></Icon>
+      <Icon icon="fa-brands:accessible-icon"></Icon>
       <StarOutlined className="m-5" />
       <StarFilled />
       <StarTwoTone twoToneColor="#eb2f96" />
