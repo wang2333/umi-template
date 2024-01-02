@@ -16,7 +16,7 @@ export default {
           })),
         },
       });
-    }, 3000);
+    }, 1000);
   },
   'POST /api/v1/queryUserList': (req: any, res: any) => {
     res.send({

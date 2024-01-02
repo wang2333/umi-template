@@ -149,11 +149,11 @@ const TableList: React.FC<unknown> = () => {
     },
   ];
   const queryClient = useQueryClient();
-  const { mutateAsync } = useQueryUserList2();
+  const { mutateAsync, data } = useQueryUserList2();
+  console.log('👻 ~ data:', data);
   const [params, setParams] = useState<any>();
 
-  const { data, isLoading } = useQueryUserList(params);
-  console.log('👻 ~ data:', data);
+  // const { data, isLoading } = useQueryUserList(params);
 
   return (
     <PageContainer
@@ -195,10 +195,7 @@ const TableList: React.FC<unknown> = () => {
         }}
       />
 
-      <CreateForm
-        onCancel={() => handleModalVisible(false)}
-        modalVisible={createModalVisible}
-      >
+      <CreateForm modalVisible={createModalVisible}>
         <ProTable<API.UserInfo, API.UserInfo>
           onSubmit={async (value) => {
             const success = await handleAdd(value);
