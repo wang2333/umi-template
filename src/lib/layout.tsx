@@ -1,5 +1,4 @@
 import { history, Link, RunTimeLayoutConfig } from '@umijs/max';
-
 import HeaderContent from './components/HeaderContent';
 import MenuHeader from './components/MenuHeader';
 

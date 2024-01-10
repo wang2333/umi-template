@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Row, Typography } from 'antd';
-
 import styles from './Guide.less';
 
 interface Props {

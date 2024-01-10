@@ -1,5 +1,4 @@
 import { useMutation, useQuery, UseQueryResult } from '@umijs/max';
-
 import { getFn } from '@/lib/request';
 
 interface User {

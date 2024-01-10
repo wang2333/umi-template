@@ -10,7 +10,6 @@
     "^@umijs/(.*)$",
     "^@ant-design/(.*)$",
     "^(antd/(.*)$)|^(antd$)",
-    "",
     "<THIRD_PARTY_MODULES>",
     "^[@/]",
     "^[./]"

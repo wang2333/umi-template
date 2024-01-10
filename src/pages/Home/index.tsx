@@ -3,7 +3,6 @@ import { Icon } from '@umijs/max';
 import { StarFilled, StarOutlined, StarTwoTone } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button } from 'antd';
-
 import { useMessage, useModal } from '@/hooks';
 import { useQueryUserList } from '@/services/demo';
 
@@ -17,8 +16,8 @@ const HomePage: React.FC = () => {
     <PageContainer>
       <Icon icon="fa:500px" className="text-dark"></Icon>
       <Icon icon="fa-brands:accessible-icon"></Icon>
-      <StarOutlined className="m-5" />
-      <StarFilled />
+      <StarOutlined className="m-10" />
+      <StarFilled className="mr-4" />
       <StarTwoTone twoToneColor="#eb2f96" />
       <Button
         onClick={() => {

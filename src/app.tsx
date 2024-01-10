@@ -1,5 +1,4 @@
 import { ConfigProvider } from 'antd';
-
 import { MessageProvider, ModalProvider } from '@/hooks';
 import { getInitialState } from '@/lib/getInitialState';
 import { layout } from '@/lib/layout';
