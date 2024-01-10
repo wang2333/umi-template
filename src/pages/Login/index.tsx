@@ -21,10 +21,10 @@ const Page: React.FC = () => {
     const res = await initialState?.fetchUserInfo?.();
     if (!res) return;
     localStorage.setItem('token', 'tolen');
-    setInitialState((s) => ({
-      ...s,
+    setInitialState({
+      ...initialState,
       currentUser: res,
-    }));
+    });
     setTimeout(() => {
       history.push('/home');
     }, 500);

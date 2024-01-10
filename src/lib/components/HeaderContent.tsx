@@ -7,10 +7,10 @@ const Header: React.FC = () => {
   const routes = useSelectedRoutes();
 
   const handleClick = () => {
-    setInitialState((s) => ({
-      ...s,
-      collapsed: !s?.collapsed,
-    }));
+    setInitialState({
+      ...initialState,
+      collapsed: !initialState?.collapsed,
+    });
   };
 
   const breadcrumbItems = routes
