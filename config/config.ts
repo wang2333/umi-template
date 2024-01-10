@@ -12,6 +12,7 @@ export default defineConfig({
   },
   antd: {},
   access: {},
+  clickToComponent: {},
   esbuildMinifyIIFE: true,
   fastRefresh: true,
   headScripts: [{ src: '/scripts/loading.js', async: true }],

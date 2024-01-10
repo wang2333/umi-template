@@ -1,15 +1,15 @@
-import React, { PropsWithChildren } from 'react';
+import React, { memo, PropsWithChildren } from 'react';
 import { Modal } from 'antd';
-import { useQueryUserList } from '@/services/demo';
+import { useQueryUserList2 } from '@/services/demo';
 
 interface CreateFormProps {
   modalVisible: boolean;
-  onCancel: () => void;
 }
 
 const CreateForm: React.FC<PropsWithChildren<CreateFormProps>> = (props) => {
-  const { modalVisible, onCancel } = props;
-  const { data } = useQueryUserList({ id: 1 });
+  const { modalVisible } = props;
+  const { data } = useQueryUserList2();
+  console.log('👻 ~ data:', data?.list);
 
   return (
     <Modal
@@ -17,7 +17,6 @@ const CreateForm: React.FC<PropsWithChildren<CreateFormProps>> = (props) => {
       title="新建"
       width={420}
       open={modalVisible}
-      onCancel={() => onCancel()}
       footer={null}
     >
       {props.children}
@@ -25,4 +24,4 @@ const CreateForm: React.FC<PropsWithChildren<CreateFormProps>> = (props) => {
   );
 };
 
-export default CreateForm;
+export default memo(CreateForm);

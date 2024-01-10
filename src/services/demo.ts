@@ -1,5 +1,4 @@
-import { useMutation, useQuery, UseQueryResult } from '@umijs/max';
-import { getFn } from '@/lib/request';
+import { useQuery } from '@/hooks';
 
 interface User {
   name: string;
@@ -10,22 +9,8 @@ interface Result {
   list: User[];
 }
 
-export function useQueryUserList(params: any): UseQueryResult<Result> {
-  return useQuery({
-    queryKey: ['GET', '/api/v1/queryUserList', params],
-  });
-}
-
-export function useQueryUserList3(params: any): UseQueryResult<Result> {
-  return useQuery({
-    queryKey: ['GET', '/api/v1/queryUserList', params],
-  });
-}
-
-export function useQueryUserList2() {
-  return useMutation((params: any) =>
-    getFn<Result>('/api/v1/queryUserList', params),
-  );
+export function useQueryUserList2(params?: any) {
+  return useQuery<Result>('GET', '/api/v1/queryUserList', params);
 }
 
 export async function queryUserList() {}

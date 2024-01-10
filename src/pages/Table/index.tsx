@@ -148,11 +148,11 @@ const TableList: React.FC<unknown> = () => {
     },
   ];
   const queryClient = useQueryClient();
-  const { mutateAsync } = useQueryUserList2();
+  const { mutateAsync, data } = useQueryUserList2();
+  console.log('👻 ~ data:', data);
   const [params, setParams] = useState<any>();
 
-  const { data, isLoading } = useQueryUserList(params);
-  console.log('👻 ~ data:', data);
+  // const { data, isLoading } = useQueryUserList(params);
 
   return (
     <PageContainer
@@ -161,12 +161,15 @@ const TableList: React.FC<unknown> = () => {
       }}
     >
       <ProTable
-        loading={isLoading}
         headerTitle="查询表格"
+        tableAlertRender={false}
+        options={false}
         actionRef={actionRef}
         rowKey="id"
         search={{
           labelWidth: 120,
+          defaultCollapsed: false,
+          collapseRender: () => false,
         }}
         toolBarRender={() => [
           <Button
@@ -177,14 +180,12 @@ const TableList: React.FC<unknown> = () => {
             新建
           </Button>,
         ]}
-        pagination={{
-          total: 100,
-        }}
         request={async (params, sorter, filter) => {
           const data = await mutateAsync({ ...params, sorter, filter });
           return Promise.resolve({
             data: data?.list || [],
             success: true,
+            total: 100,
           });
         }}
         columns={columns}
@@ -192,32 +193,8 @@ const TableList: React.FC<unknown> = () => {
           onChange: (_, selectedRows) => setSelectedRows(selectedRows),
         }}
       />
-      {selectedRowsState?.length > 0 && (
-        <FooterToolbar
-          extra={
-            <div>
-              已选择{' '}
-              <a style={{ fontWeight: 600 }}>{selectedRowsState.length}</a>{' '}
-              项&nbsp;&nbsp;
-            </div>
-          }
-        >
-          <Button
-            onClick={async () => {
-              await handleRemove(selectedRowsState);
-              setSelectedRows([]);
-              actionRef.current?.reloadAndRest?.();
-            }}
-          >
-            批量删除
-          </Button>
-          <Button type="primary">批量审批</Button>
-        </FooterToolbar>
-      )}
-      <CreateForm
-        onCancel={() => handleModalVisible(false)}
-        modalVisible={createModalVisible}
-      >
+
+      <CreateForm modalVisible={createModalVisible}>
         <ProTable<API.UserInfo, API.UserInfo>
           onSubmit={async (value) => {
             const success = await handleAdd(value);
