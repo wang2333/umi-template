@@ -6,6 +6,7 @@
     "dev": "cross-env REACT_APP_ENV=dev max dev",
     "lint:eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx",
     "lint:format": "prettier --cache --write .",
+    "preview": "max preview",
     "setup": "max setup"
   },
   "lint-staged": {
